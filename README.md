@@ -5,6 +5,21 @@ The Great Debugging of the `signal-cli` Daemon D-Bus Integration
 
 It has been recently ported to FreeBSD ([net-im/signal-cli](http://freshports.org/net-im/signal-cli)\). Most of its features work as expected except its integration with [D-Bus](https://www.freedesktop.org/wiki/Software/dbus/), which is necessary for UI wrappers for signal-cli like [scli](https://github.com/isamert/scli).
 
+Expected behavior
+-----------------
+
+1.	The service starts without any issues:
+
+	```
+	service signal_cli start
+	```
+
+2.	The user can send messages via the signal-cli daemon:
+
+	```
+	signal-cli --dbus-system send -m "Message" +00123123123
+	```
+
 Enviroment setup
 ----------------
 
