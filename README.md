@@ -9,6 +9,7 @@ Enviroment setup
 ----------------
 
 -	Install the port.
+-	Link (or register) signal-cli to your Signal account. Do it as the `signal-user` from `/var/lib/signal-cli`.
 
 Current challanges
 ------------------
