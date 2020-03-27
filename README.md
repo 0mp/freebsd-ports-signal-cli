@@ -521,5 +521,14 @@ dbus-send --session --type=method_call --print-reply --dest="org.asamk.Signal" /
 
 `qdbus` (from `devel/qt5-qdbus`) can be used to view avaiable interfaces to D-Bus.
 
+### Resources
+
+-	https://github.com/AsamK/signal-cli/wiki/DBus-service
+-	https://unix.stackexchange.com/questions/194308/d-bus-authentication-and-authorization/200104
+-	D-Bus service files:
+	-	http://kkaempf.blogspot.com/2009/03/d-bus-service-on-demand.html
+	-	https://stackoverflow.com/questions/19453507/how-to-create-a-dbus-service
+-	https://gitlab.freedesktop.org/dbus/dbus-java/commit/129eed36e2cc5e55c2a2ab057e2eccbe0e23c395
+
 <!-- vim: softtabstop=8 shiftwidth=8 tabstop=8 noexpandtab
 -->
