@@ -62,6 +62,7 @@ USE_RC_SUBR=	signal_cli
 NO_ARCH=	yes
 
 SUB_FILES=	${PORTNAME}
+SUB_LIST=	JAVA_HOME=${JAVA_HOME}
 
 USERS=		signal-cli
 GROUPS=		signal-cli

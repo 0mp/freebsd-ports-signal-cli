@@ -1,6 +1,15 @@
 #! /bin/sh -
 # $FreeBSD: head/net-im/signal-cli/files/signal-cli.in 529131 2020-03-25 21:39:53Z 0mp $
 
-: "${JAVA_OPTS:=-Djava.library.path=%%LOCALBASE%%/lib/jni}"
-export JAVA_OPTS
-exec %%DATADIR%%/bin/signal-cli "$@"
+export JAVA_OPTS="-Djava.library.path=%%LOCALBASE%%/lib"
+export JAVA_HOME="%%JAVA_HOME%%"
+export SIGNAL_CLI_OPTS="-Xms2m"
+
+# exec %%DATADIR%%/bin/signal-cli "$@"
+
+#dbus_java_jar="/usr/local/share/signal-cli/lib/debug-1.1.1.jar:/usr/local/share/signal-cli/lib/dbus-java-2.7.0.jar"
+dbus_java_jar="/usr/local/share/java/classes/dbus-2.7.jar:/usr/local/share/java/classes/debug-enable.jar"
+
+CLASSPATH="/usr/local/share/signal-cli/lib/signal-cli-0.6.5.jar:/usr/local/share/signal-cli/lib/libphonenumber-8.10.7.jar:/usr/local/share/signal-cli/lib/jackson-core-2.9.9.jar:/usr/local/share/signal-cli/lib/bcprov-jdk15on-1.64.jar:/usr/local/share/signal-cli/lib/signal-protocol-java-2.7.1.jar:/usr/local/share/signal-cli/lib/protobuf-java-2.5.0.jar:/usr/local/share/signal-cli/lib/unix-0.5.1.jar:/usr/local/share/signal-cli/lib/threetenbp-1.3.6.jar:/usr/local/share/signal-cli/lib/signal-service-java-2.13.9_unofficial_1.jar:/usr/local/share/signal-cli/lib/curve25519-java-0.5.0.jar:/usr/local/share/signal-cli/lib/hexdump-0.2.1.jar:/usr/local/share/signal-cli/lib/okhttp-3.12.1.jar:/usr/local/share/signal-cli/lib/jackson-databind-2.9.9.2.jar:/usr/local/share/signal-cli/lib/signal-metadata-java-0.0.3.jar:/usr/local/share/signal-cli/lib/argparse4j-0.8.1.jar:/usr/local/share/signal-cli/lib/okio-1.15.0.jar:/usr/local/share/signal-cli/lib/jackson-annotations-2.9.0.jar:${dbus_java_jar}"
+
+/usr/local/openjdk8/bin/java -Djava.library.path=/usr/local/lib -Xms2m -classpath ${CLASSPATH} org.asamk.signal.Main "$@"
