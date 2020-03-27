@@ -14,64 +14,6 @@ Enviroment setup
 Current challanges
 ------------------
 
-Troubleshooting Java Exceptions
--------------------------------
-
-### org.freedesktop.dbus.exceptions.DBusException: Cannot Resolve Session Bus Address
-
-```console
-$ signal-cli -u +00123456789 daemon
-org.freedesktop.dbus.exceptions.DBusException: Cannot Resolve Session Bus Address
-        at org.freedesktop.dbus.DBusConnection.getConnection(DBusConnection.java:267)
-        at org.asamk.signal.commands.DaemonCommand.handleCommand(DaemonCommand.java:50)
-        at org.asamk.signal.Main.handleCommands(Main.java:126)
-        at org.asamk.signal.Main.main(Main.java:61)
-```
-
-#### Solution
-
-The DISPLAY environment variable has to omit the leading ":", e.g., "0" instead of ":0". Otherwise, signal-cli tries to open an invalid D-BUS session bus file, e.g., `~/.dbus/session-bus/0123456789abcdef0123456789abcdef-:0` instead of `~/.dbus/session-bus/0123456789abcdef0123456789abcdef-0`.
-
-### org.freedesktop.dbus.exceptions.DBusException: Failed to connect to bus unknown address type 'unix
-
-```console
-$ DISPLAY=0 signal-cli -u +00123456789 daemon
-org.freedesktop.dbus.exceptions.DBusException: Failed to connect to bus unknown address type 'unix
-        at org.freedesktop.dbus.DBusConnection.<init>(DBusConnection.java:304)
-        at org.freedesktop.dbus.DBusConnection.getConnection(DBusConnection.java:282)
-        at org.asamk.signal.commands.DaemonCommand.handleCommand(DaemonCommand.java:50)
-        at org.asamk.signal.Main.handleCommands(Main.java:126)
-        at org.asamk.signal.Main.main(Main.java:61)
-```
-
-#### Solution
-
-Unquote the value of the `DBUS_SESSION_BUS_ADDRESS` variable in `~/.dbus/session-bus/0123456789abcdef0123456789abcdef-0`. For example:
-
-```
-DBUS_SESSION_BUS_ADDRESS='unix:path=/tmp/dbus-ABCDEFGHIJ,guid=fedcba9876543210fedcba9876543210'
-```
-
-should be
-
-```
-DBUS_SESSION_BUS_ADDRESS=unix:path=/tmp/dbus-ABCDEFGHIJ,guid=fedcba9876543210fedcba9876543210
-```
-
-### Missing native library dependency for dbus service: no unix-java in java.library.path
-
-```console
-$ export DISPLAY=0 
-$ signal-cli -u +00123456789 daemon
-Missing native library dependency for dbus service: no unix-java in java.library.path
-```
-
-`signal-cli` cannot find the share library provided by libmatthew. A proper path can be set via `JAVA_OPTS`:
-
-```sh
-export JAVA_OPTS="-Djava.library.path=/usr/local/lib"
-```
-
 ### org.freedesktop.dbus.exceptions.DBusException: Failed to connect to bus Failed to auth
 
 ```console
@@ -484,6 +426,64 @@ org.freedesktop.dbus.exceptions.DBusException: Failed to connect to bus Failed t
     at org.asamk.signal.commands.DaemonCommand.handleCommand(DaemonCommand.java:50)
     at org.asamk.signal.Main.handleCommands(Main.java:126)
     at org.asamk.signal.Main.main(Main.java:61)
+```
+
+Troubleshooting Java Exceptions
+-------------------------------
+
+### org.freedesktop.dbus.exceptions.DBusException: Cannot Resolve Session Bus Address
+
+```console
+$ signal-cli -u +00123456789 daemon
+org.freedesktop.dbus.exceptions.DBusException: Cannot Resolve Session Bus Address
+        at org.freedesktop.dbus.DBusConnection.getConnection(DBusConnection.java:267)
+        at org.asamk.signal.commands.DaemonCommand.handleCommand(DaemonCommand.java:50)
+        at org.asamk.signal.Main.handleCommands(Main.java:126)
+        at org.asamk.signal.Main.main(Main.java:61)
+```
+
+#### Solution
+
+The DISPLAY environment variable has to omit the leading ":", e.g., "0" instead of ":0". Otherwise, signal-cli tries to open an invalid D-BUS session bus file, e.g., `~/.dbus/session-bus/0123456789abcdef0123456789abcdef-:0` instead of `~/.dbus/session-bus/0123456789abcdef0123456789abcdef-0`.
+
+### org.freedesktop.dbus.exceptions.DBusException: Failed to connect to bus unknown address type 'unix
+
+```console
+$ DISPLAY=0 signal-cli -u +00123456789 daemon
+org.freedesktop.dbus.exceptions.DBusException: Failed to connect to bus unknown address type 'unix
+        at org.freedesktop.dbus.DBusConnection.<init>(DBusConnection.java:304)
+        at org.freedesktop.dbus.DBusConnection.getConnection(DBusConnection.java:282)
+        at org.asamk.signal.commands.DaemonCommand.handleCommand(DaemonCommand.java:50)
+        at org.asamk.signal.Main.handleCommands(Main.java:126)
+        at org.asamk.signal.Main.main(Main.java:61)
+```
+
+#### Solution
+
+Unquote the value of the `DBUS_SESSION_BUS_ADDRESS` variable in `~/.dbus/session-bus/0123456789abcdef0123456789abcdef-0`. For example:
+
+```
+DBUS_SESSION_BUS_ADDRESS='unix:path=/tmp/dbus-ABCDEFGHIJ,guid=fedcba9876543210fedcba9876543210'
+```
+
+should be
+
+```
+DBUS_SESSION_BUS_ADDRESS=unix:path=/tmp/dbus-ABCDEFGHIJ,guid=fedcba9876543210fedcba9876543210
+```
+
+### Missing native library dependency for dbus service: no unix-java in java.library.path
+
+```console
+$ export DISPLAY=0 
+$ signal-cli -u +00123456789 daemon
+Missing native library dependency for dbus service: no unix-java in java.library.path
+```
+
+`signal-cli` cannot find the share library provided by libmatthew. A proper path can be set via `JAVA_OPTS`:
+
+```sh
+export JAVA_OPTS="-Djava.library.path=/usr/local/lib"
 ```
 
 General notes
