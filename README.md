@@ -1,5 +1,5 @@
-The Great Debugging of the `signal-cli Daemon
-=============================================
+The Great Debugging of the `signal-cli` Daemon D-Bus Integration
+================================================================
 
 [signal-cli](https://github.com/AsamK/signal-cli) is a command-line client for the [Signal messaging service](https://www.signal.org/).
 
