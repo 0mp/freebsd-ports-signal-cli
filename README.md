@@ -20,6 +20,8 @@ Expected behavior
 	signal-cli --dbus-system send -m "Message" +00123123123
 	```
 
+3.	The user is able to start scli without any issues.
+
 Enviroment setup
 ----------------
 
