@@ -57,6 +57,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	AsamK
 USE_JAVA=	yes
 JAVA_VERSION=	7+
+USE_RC_SUBR=	signal_cli
 
 NO_ARCH=	yes
 
