@@ -1,0 +1,20 @@
+[
+{ type: install
+  message: <<EOM
+# Service configuration
+
+    sysrc signal_cli_enable="YES"
+    sysrc signal_cli_phone_number="+48123456789"
+
+# Linking
+
+First, generate the registration link (it starts with "tsdevice:/?uuid="):
+
+    service signal_cli configure link -n "desired device name"
+
+XXX
+
+
+EOM
+}
+]
