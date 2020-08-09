@@ -16,6 +16,7 @@ share/man/man1/signal-cli.1.gz
 %%DATADIR%%/lib/jackson-databind-2.9.9.2.jar
 %%DATADIR%%/lib/java-utils-1.0.6.jar
 %%DATADIR%%/lib/jffi-1.2.23.jar
+%%DATADIR%%/lib/jffi-1.2.23-native.jar
 %%DATADIR%%/lib/jnr-a64asm-1.0.0.jar
 %%DATADIR%%/lib/jnr-constants-0.9.15.jar
 %%DATADIR%%/lib/jnr-enxio-0.28.jar

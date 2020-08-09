@@ -1,4 +1,4 @@
-TIMESTAMP = 1596709973
+TIMESTAMP = 1596967750
 SHA256 (annotations-13.0.jar) = ace2a10dc8e2d5fd34925ecac03e4988b2c0f851650c94b8cef49ba1bd111478
 SIZE (annotations-13.0.jar) = 17536
 SHA256 (argparse4j-0.8.1.jar) = 98cb5468cac609f3bc07856f2e34088f50dc114181237c48d20ca69c3265d044
@@ -29,6 +29,8 @@ SHA256 (java-utils-1.0.6.jar) = c57f755a8042528f5c77cded3968493e0e7738e722c5a995
 SIZE (java-utils-1.0.6.jar) = 65417
 SHA256 (jffi-1.2.23.jar) = 0b9c8ec750e680c28c385b3a3dfa8755e904a4ae82be0b95c109c54e5a1ca5d0
 SIZE (jffi-1.2.23.jar) = 152016
+SHA256 (jffi-1.2.23-native.jar) = 38cd5c33c4310d173b9345348e3a09528051b8e67f00e8477140c45062034a25
+SIZE (jffi-1.2.23-native.jar) = 795222
 SHA256 (jnr-a64asm-1.0.0.jar) = 53ae5ea7fa5c284e8279aa348e7b9de4548b0cae10bfd058fa217c791875e4cf
 SIZE (jnr-a64asm-1.0.0.jar) = 86270
 SHA256 (jnr-constants-0.9.15.jar) = 72a1888282285dbd46e32e90b2c19f503c183bc8eccb0087d7c480b9b2b95baf
