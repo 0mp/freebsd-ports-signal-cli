@@ -11,7 +11,6 @@ MASTER_SITES=	https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/ja
 		https://repo.maven.apache.org/maven2/com/github/hypfvieh/dbus-java/3.2.2/:_dbus_java \
 		https://repo.maven.apache.org/maven2/com/github/hypfvieh/java-utils/1.0.6/:_java_utils \
 		https://repo.maven.apache.org/maven2/com/github/jnr/jffi/1.2.23/:_jffi \
-		https://repo.maven.apache.org/maven2/com/github/jnr/jffi/1.2.23/:_jffi_native \
 		https://repo.maven.apache.org/maven2/com/github/jnr/jnr-a64asm/1.0.0/:_jnr_a64asm \
 		https://repo.maven.apache.org/maven2/com/github/jnr/jnr-constants/0.9.15/:_jnr_constants \
 		https://repo.maven.apache.org/maven2/com/github/jnr/jnr-enxio/0.28/:_jnr_enxio \
@@ -56,7 +55,6 @@ DISTFILES=	annotations-13.0.jar:_annotations \
 		jackson-databind-2.9.9.2.jar:_jackson_databind \
 		java-utils-1.0.6.jar:_java_utils \
 		jffi-1.2.23.jar:_jffi \
-		jffi-1.2.23-native.jar:_jffi_native \
 		jnr-a64asm-1.0.0.jar:_jnr_a64asm \
 		jnr-constants-0.9.15.jar:_jnr_constants \
 		jnr-enxio-0.28.jar:_jnr_enxio \
@@ -77,6 +75,10 @@ DISTFILES=	annotations-13.0.jar:_annotations \
 		slf4j-nop-1.7.30.jar:_slf4j_nop \
 		threetenbp-1.3.6.jar:_threetenbp \
 		zkgroup-java-0.7.0.jar:_zkgroup_java
+# jffi_native is not being recognized automatically for some sort by the Gradle
+# configuration. Appended it to DISTFILES separately here as to not miss it
+# when upgrading the port in the future.
+DISTFILES+=	jffi-1.2.23-native.jar:_jffi
 EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
 MAINTAINER=	0mp@FreeBSD.org
